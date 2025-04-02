@@ -1,0 +1,132 @@
+body {
+  background-color: #efeded;
+}
+
+.checkout-container {
+  min-height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: #f3f4f6;
+}
+
+  
+.checkout-box {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+}
+  
+.checkout-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+  
+.checkout-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+  
+.checkout-field {
+  margin-bottom: 1.25rem;
+}
+  
+.checkout-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+  
+.checkout-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.2s ease-in-out;
+}
+  
+.checkout-select:focus {
+  outline: none;
+  border-color: #000000;
+}
+  
+.checkout-button {
+  width: 100%;
+  background-color: #ff9800;
+  color: #ffffff;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+  
+.checkout-button:hover {
+  background-color: #e68900;
+}
+
+.cart-items {
+  margin-bottom: 2rem;
+}
+  
+.cart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+  
+.cart-item {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+  
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+}
+  
+.cart-item-info {
+  flex-grow: 1;
+}
+  
+.cart-item-name {
+  font-weight: 500;
+  color: #1f2937;
+}
+  
+.cart-item-price {
+  font-size: 14px;
+  color: #6b7280;
+}
+  
+.cart-item-qty {
+  font-size: 14px;
+  color: #6b7280;
+}
+  
+.cart-empty {
+  color: #9ca3af;
+  font-style: italic;
+}

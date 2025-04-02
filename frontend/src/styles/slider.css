@@ -1,0 +1,36 @@
+.banner-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .banner-img {
+    width: 1300px;
+    height: 500px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+
+
+  }
+
+  .swiper-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  .swiper-button-prev, .swiper-button-next {
+    color: #000000; 
+  }
+  
+  .swiper-pagination-bullet {
+    background: #000000;
+  }
+  

@@ -1,0 +1,39 @@
+.admin-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .admin-sidebar {
+    width: 250px;
+    background: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  .admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .admin-sidebar li {
+    margin: 10px 0;
+  }
+  
+  .admin-sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .admin-sidebar a:hover,
+  .admin-sidebar a.active {
+    background: #555;
+  }
+  
+  .admin-content {
+    flex: 1;
+    padding: 20px;
+  }
+  

@@ -1,0 +1,55 @@
+.account-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.account-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.account-details {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.account-details p {
+    margin: 10px 0;
+}
+
+strong {
+    color: #000;
+}
+
+.update-btn {
+    width: 200px;
+    height: 35px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  
+  .update-btn:hover {
+    background: #e68900;
+  }
+  
+  .account-edit-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }

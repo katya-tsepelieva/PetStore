@@ -1,0 +1,92 @@
+.max-w-4xl {
+    max-width: 800px;
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #222;
+    text-align: center;
+  }
+  
+  .order-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .order-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .badges-row {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+  }
+  
+  .badge-payment {
+    background: #4f46e5;
+  }
+  
+  .badge-delivery {
+    background: #10b981;
+  }
+  
+  .badge-success {
+    background: #22c55e;
+  }
+  
+  .badge-pending {
+    background: #f97316;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .loading, .error, .no-orders {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  ul {
+    margin-top: 8px;
+  }
+  
+  ul li {
+    margin-bottom: 4px;
+  }
+  

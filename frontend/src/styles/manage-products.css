@@ -1,0 +1,107 @@
+.manage-products {
+    padding: 20px;
+  }
+  
+  .manage-products .product-form {
+    margin-bottom: 20px;
+    
+  }
+  
+  .manage-products .product-form input,
+  .manage-products .product-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .manage-products .product-form button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .manage-products .product-form button:hover {
+    background-color: #e68900;
+  }
+  
+  .manage-products table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .manage-products table th,
+  .manage-products table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .manage-products button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .manage-products button:hover {
+    background-color: #e68900;
+  }
+  
+  .manage-products .product-form select {
+    appearance: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .manage-products .product-form select:focus {
+    border-color: #f39c12;
+    outline: none;
+  }
+  
+  .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 20.6%;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .styled-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+
+  .styled-select select:focus {
+    outline: none;
+    border-color: #ff9800;
+    box-shadow: 0 0 4px rgba(208, 171, 21, 0.5);
+  }
+
+  .styled-select::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    pointer-events: none;
+    font-size: 12px;
+  }

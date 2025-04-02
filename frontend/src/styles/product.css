@@ -1,0 +1,155 @@
+.product-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-main {
+  display: flex;
+  gap: 20px;
+}
+
+.product-image-page {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.product-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+  
+  .product-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  .product-page-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .add-to-cart-product-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    max-width: 200px;
+  }
+  
+  .add-to-cart-product-btn:hover {
+    background-color: #e68900;
+  }
+  
+  @media (max-width: 768px) {
+    .product-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-image {
+      max-width: 100%;
+    }
+  }
+  
+.reviews {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+}
+
+.reviews h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.review-item {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.review-item strong {
+  font-size: 16px;
+  color: #444;
+}
+
+.review-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.reviews form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviews form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.reviews form input,
+.reviews form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.reviews form button {
+  padding: 12px 20px;
+  width: 20%;
+  background: #ff9800;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reviews form button:hover {
+  background: #e68900;
+}
+
+.reviews ul {
+  list-style: none;
+  padding-left: 0;
+}
