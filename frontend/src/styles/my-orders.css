@@ -1,3 +1,7 @@
+* {
+  font-family: 'Arial', sans-serif; /* Глобальний шрифт для всієї сторінки */
+}
+
 .max-w-4xl {
     max-width: 800px;
   }

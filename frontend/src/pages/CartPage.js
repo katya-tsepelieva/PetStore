@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
 import { FaTrash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/cart.css";
 
 
@@ -24,14 +24,19 @@ const CartPage = () => {
       {cartItems.length === 0 ? (
         <div>
           <p className="empty-cart">Ваш кошик порожній.</p>
-          <a href="/" className="go-shopping">Продовжити покупки</a>
+          <button className="go-to-shopping-home" onClick={() => window.location.href = '/'}>
+            Продовжити покупки
+          </button>
+
         </div>
       ) : (
         <div>
           <div className="cart-items">
             {cartItems.map((item) => (
               <div key={item.product_id} className="cart-item">
-                <img src={`/images/${item.image_url}`} alt={item.name} className="product-image" />
+                <Link to={`/product/${item.product_id}`} className="favourite-item-link">
+                  <img src={`/images/${item.image_url}`} alt={item.name} className="product-image" />
+                </Link>
                 <div className="cart-item-details">
                   <h3>{item.name}</h3>
                   <p>{item.price} грн</p>
@@ -50,7 +55,7 @@ const CartPage = () => {
           <div className="cart-total">
             <p>Загальна сума: {calculateTotal()} грн</p>
           </div>
-          <button className="checkout-button" onClick={handleClick}>
+          <button className="checkout-cart-button" onClick={handleClick}>
             Перейти до оформлення
           </button>
           {/* <button className="clear-cart" onClick={() => clearCart()}>Очистити кошик</button> */}

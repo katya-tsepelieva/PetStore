@@ -1,9 +1,13 @@
+* {
+  font-family: 'Arial', sans-serif; 
+}
+
 .footer {
     padding: 20px 0;
     text-align: center;
     margin-top: 40px;
-    background-color: #2c3e50;
-    color: white;
+    background-color: #004643;
+    color: #faf4d3;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   

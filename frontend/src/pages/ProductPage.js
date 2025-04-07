@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import axiosInstance from "../utils/axiosInstance";
+import ReactStars from "react-rating-stars-component";
 import "../styles/product.css";
 
 const ProductPage = () => {
@@ -11,6 +12,12 @@ const ProductPage = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const { addToCart } = useCart();
+
+  const averageRating =
+  reviews.length > 0
+    ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
+    : 0;
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -69,6 +76,14 @@ const ProductPage = () => {
   
         <div className="product-details">
           <h1 className="product-title">{product.name}</h1>
+          <ReactStars
+            count={5}
+            value={averageRating}
+            size={24}
+            edit={false}
+            isHalf={true}
+            activeColor="#ffd700"
+          />
           <p className="product-description">{product.description}</p>
           <p className="product-page-price">{product.price} грн</p>
   
@@ -85,7 +100,6 @@ const ProductPage = () => {
         </div>
       </div>
   
-      {/* Відгуки */}
       <div className="reviews">
         <h2>Відгуки</h2>
         {reviews.length > 0 ? (
@@ -93,7 +107,14 @@ const ProductPage = () => {
             {reviews.map((review) => (
               <li key={review.id} className="review-item">
                 <p><strong>{review.username}</strong></p>
-                <p>Оцінка: {review.rating}</p>
+                <ReactStars
+                  count={5}
+                  value={review.rating}
+                  size={20}
+                  edit={false}
+                  isHalf={true}
+                  activeColor="#ffd700"
+                />
                 <p>{review.comment}</p>
               </li>
             ))}
@@ -106,13 +127,13 @@ const ProductPage = () => {
         <form onSubmit={handleAddReview}>
           <div>
             <label>Оцінка:</label>
-            <input
-              type="number"
-              min="1"
-              max="5"
+            <ReactStars
+              count={5}
               value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              required
+              onChange={(newRating) => setRating(newRating)}
+              size={30}
+              isHalf={false}
+              activeColor="#ffd700"
             />
           </div>
           <div>

@@ -63,12 +63,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <Link to="/" className="logo">PetStore</Link>
+        <Link to="/" className="logo">PETSTORE</Link>
 
-        <div className="nav-links">
+        {/* <div className="nav-links">
           <Link to="/" className="nav-item"><FaHome /> Головна</Link>
-          <Link to="/contacts" className="nav-item"><FaPhone /> Контакти</Link>
-        </div>
+        </div> */}
 
         <div className="nav-right">
           <form onSubmit={handleSearchSubmit} className="search-box">
@@ -76,10 +75,13 @@ const Navbar = () => {
             <button type="submit"><FaSearch /></button>
           </form>
 
+          
+
           <Link to="/cart" className="cart">
             <FaShoppingCart />
             {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
           </Link>
+          <Link to="/contacts" className="contacts"><FaPhone /></Link>
 
           {user ? (
             <div className="account-wrapper" ref={dropdownRef}>

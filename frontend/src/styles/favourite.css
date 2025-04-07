@@ -1,3 +1,7 @@
+* {
+  font-family: 'Arial', sans-serif; /* Глобальний шрифт для всієї сторінки */
+}
+
 .favourite-container {
     max-width: 800px;
     margin: 40px auto;
@@ -20,18 +24,22 @@
   }
   
   .go-shopping {
-    display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background: #ff9800;
-    color: #fff;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
     border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
   }
   
   .go-shopping:hover {
-    background: #e68900;
+    background-color: #004643;
+    color: white;
   }
   
   .favourite-items {
@@ -86,10 +94,12 @@
     width: 30px;
     height: 30px;
     border: none;
-    background: #ff9800;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
+    background-color: white;  
+    color: #004643;
+    border: 1px solid #0c1618;    
+    font-size: 16px;          
+    cursor: pointer;         
+    transition: all 0.3s ease; 
     border-radius: 5px;
   }
 
@@ -107,3 +117,25 @@
     color: #ccc;
     transform: scale(1.2);
   }
+
+  .add-to-cart-favourite-btn {
+    background-color: white;  
+    color: #004643;
+    padding: 15px 20px;       
+    font-size: 20px;          
+    cursor: pointer;         
+    transition: all 0.3s ease; 
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .add-to-cart-favourite-btn:hover {
+    background-color: #004643;
+    color: white;            
+  }
+  
+
+  

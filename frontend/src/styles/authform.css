@@ -42,8 +42,9 @@
 .auth-in-form button {
   width: 90%;
   padding: 12px;
-  background-color: #ff9800;
-  color: white;
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -52,7 +53,8 @@
 }
 
 .auth-in-form button:hover {
-  background-color: #e68900;
+  background-color: #004643;
+  color: white;
 }
 
 .auth-in-form .toggle-form {

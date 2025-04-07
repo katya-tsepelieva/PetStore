@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import BannerSlider from '../components/BannerSlider';
+// import BannerSlider from '../components/BannerSlider';
 import { useFavourite } from "../context/FavouriteContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
@@ -76,8 +76,8 @@ const Home = () => {
   return (
     
     <div className="home-container">
-      <BannerSlider />
-      <h1 className="home-title">Каталог товарів</h1>
+      {/* <BannerSlider /> */}
+      <h1 className="home-title">КАТАЛОГ ТОВАРІВ</h1>
       {searchQuery && <h2>Результати пошуку для: "{searchQuery}"</h2>}
 
       <div className="controls">
@@ -99,6 +99,7 @@ const Home = () => {
         <div className="filter-panel">
           <h3>Фільтр</h3>
 
+          <div className="filter-row">
           <div className="filter-group">
             <label>Ціновий діапазон:</label>
             <div className="price-range">
@@ -122,7 +123,7 @@ const Home = () => {
 
           <div className="filter-group">
           <label>Для кого:</label>
-            <div className="styled-select">
+            <div className="styled-home-select">
               <select value={targetFilter} onChange={(e) => setTargetFilter(e.target.value)}>
                 <option value="">Усі</option>
                 <option value="dogs">Собаки</option>
@@ -136,7 +137,7 @@ const Home = () => {
 
           <div className="filter-group">
             <label>Категорія:</label>
-            <div className="styled-select">
+            <div className="styled-home-select">
               <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
                 <option value="">Усі</option>
                 <option value="Food">Корм</option>
@@ -145,6 +146,7 @@ const Home = () => {
                 <option value="Aquatic">Акваріуми</option>
               </select>
             </div>
+          </div>
           </div>
 
           <div className="filter-group">
@@ -157,6 +159,7 @@ const Home = () => {
                 Тільки в наявності
             </label>
           </div>
+          
 
 
           <button

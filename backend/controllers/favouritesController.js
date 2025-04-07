@@ -39,7 +39,7 @@ const getFavourite = async (req, res) => {
 
   try {
     const [favouriteItem] = await db.query(
-      `SELECT f.id, f.product_id, p.name, p.image_url 
+      `SELECT f.id, f.product_id, p.name, p.image_url, p.price, p.stock 
        FROM favourites f
        JOIN products p ON f.product_id = p.id
        WHERE f.user_id = ?`,

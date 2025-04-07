@@ -18,14 +18,16 @@
   .manage-users button {
     margin-right: 10px;
     padding: 5px 10px;
-    background-color: #f39c12;
-    color: white;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
     border: none;
     cursor: pointer;
     border-radius: 5px;
   }
   
   .manage-users button:hover {
-    background-color: #e68900;
+    background-color: #004643;
+    color: white;
   }
   

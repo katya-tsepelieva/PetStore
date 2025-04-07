@@ -1,3 +1,7 @@
+* {
+    font-family: 'Arial', sans-serif; /* Глобальний шрифт для всієї сторінки */
+  }
+
 .account-container {
     max-width: 600px;
     margin: 50px auto;
@@ -5,7 +9,7 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
 }
 
 .account-container h2 {
@@ -31,8 +35,9 @@ strong {
     width: 200px;
     height: 35px;
     border: none;
-    background: #ff9800;
-    color: white;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
@@ -41,7 +46,8 @@ strong {
   }
   
   .update-btn:hover {
-    background: #e68900;
+    background-color: #004643;
+    color: white;
   }
   
   .account-edit-form input {

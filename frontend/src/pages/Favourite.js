@@ -2,11 +2,16 @@ import React from "react";
 import { useFavourite } from "../context/FavouriteContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom"; 
+import { FaShoppingCart} from "react-icons/fa";
+import { useCart } from "../context/CartContext";
+import { Link, useNavigate } from "react-router-dom"; 
 import "../styles/favourite.css";
 
 const FavouritePage = () => {
   const { favouriteItems, removeFromFavourite } = useFavourite();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+
 
   return (
     <div className="favourite-container">
@@ -15,7 +20,9 @@ const FavouritePage = () => {
       {favouriteItems.length === 0 ? (
         <div>
           <p className="empty-favourite">Обрані товари відсутні.</p>
-          <a href="/" className="go-shopping">Переглянути товари</a>
+          <button className="go-shopping" onClick={() => window.location.href = '/'}>
+            Переглянути товари
+          </button>
         </div>
       ) : (
         <div>
@@ -40,6 +47,16 @@ const FavouritePage = () => {
                     />
                   </div>
                 </div>
+                {item.stock > 0 ? (
+                  <button 
+                    className="add-to-cart-favourite-btn" 
+                    onClick={() => addToCart(item)}
+                  >
+                    <FaShoppingCart />
+                  </button>
+                ) : (
+                  <div className="out-of-stock">Немає в наявності</div>
+                )}
               </div>
             ))}
           </div>

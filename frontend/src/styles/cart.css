@@ -1,3 +1,7 @@
+* {
+  font-family: 'Arial', sans-serif; 
+}
+
 .cart-container {
   max-width: 800px;
   margin: 40px auto;
@@ -19,19 +23,23 @@
   color: #777;
 }
 
-.go-shopping {
-  display: inline-block;
+.go-to-shopping-home {
   margin-top: 15px;
   padding: 10px 20px;
-  background: #ff9800;
-  color: #fff;
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
   border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.go-shopping:hover {
-  background: #e68900;
+.go-to-shopping-home:hover {
+  background-color: #004643;
+  color: white;
 }
 
 .cart-items {
@@ -83,18 +91,24 @@
 }
 
 .cart-item-actions button {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background: #ff9800;
-  color: white;
-  font-size: 18px;
+  width: 50px;
+  height: 40px;
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
+  padding: 10px;
+  font-size: 16px;
   cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
   border-radius: 5px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .cart-item-actions button:hover {
-  background: #e68900;
+  background-color: #004643;
+  color: white;
 }
 
 .cart-item-actions span {
@@ -113,34 +127,38 @@
 }
 
 .clear-cart {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #ff9800;
-  color: white;
-  border: none;
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
+  padding: 10px;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
   border-radius: 5px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .clear-cart:hover {
-  background: #e68900;
+  background-color: #004643;
+  color: white;
 }
 
-.checkout-button {
-  width: 100%;
-  background-color: #ff9800;
-  color: #ffffff;
-  padding: 0.75rem;
+.checkout-cart-button {
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
+  padding: 10px;
   font-size: 16px;
-  font-weight: 500;
-  border: none;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.checkout-button:hover {
-  background-color: #e68900;
+.checkout-cart-button:hover {
+  background-color: #004643;
+  color: white;
 }

@@ -1,3 +1,7 @@
+* {
+  font-family: 'Arial', sans-serif; /* Глобальний шрифт для всієї сторінки */
+}
+
 .product-container {
   max-width: 900px;
   margin: 40px auto;
@@ -57,17 +61,18 @@
     padding: 12px 20px;
     font-size: 18px;
     font-weight: bold;
-    color: white;
-    background-color: #ff9800;
-    border: none;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
     max-width: 200px;
+    transition: background-color 0.3s ease;
   }
   
   .add-to-cart-product-btn:hover {
-    background-color: #e68900;
+    background-color: #004643;
+    color: white;
   }
   
   @media (max-width: 768px) {
@@ -136,17 +141,18 @@
 .reviews form button {
   padding: 12px 20px;
   width: 20%;
-  background: #ff9800;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
+  background-color: white;
+  color: #004643;
+  border: 1px solid #0c1618;
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .reviews form button:hover {
-  background: #e68900;
+  background-color: #004643;
+  color: white;
 }
 
 .reviews ul {

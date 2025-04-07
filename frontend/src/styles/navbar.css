@@ -5,8 +5,8 @@ body, html {
 }
 
 .navbar {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #004643;
+    color: #faf4d3;
     padding: 15px 0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
@@ -24,7 +24,7 @@ body, html {
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: #faf4d3;
   }
   
   .nav-links {
@@ -33,7 +33,7 @@ body, html {
   }
   
   .nav-item {
-    color: white;
+    color: #faf4d3;
     text-decoration: none;
     font-size: 16px;
     display: flex;
@@ -42,7 +42,7 @@ body, html {
   }
   
   .nav-item:hover {
-    color: #f39c12;
+    color: #0c1618;
   }
   
   .nav-right {
@@ -54,29 +54,29 @@ body, html {
   .search-box {
     display: flex;
     align-items: center;
-    background: white;
+    background: #faf4d3;
     border-radius: 5px;
     overflow: hidden;
   }
   
   .search-box input {
     border: none;
-    padding: 8px 10px;
+    padding: 8px 15px;
     outline: none;
-    width: 150px;
+    width: 180px;
   }
   
   .search-box button {
-    background: #f39c12;
+    background: #0c1618;
     border: none;
     padding: 8px;
     cursor: pointer;
-    color: white;
+    color: #faf4d3;
   }
   
   .cart {
     position: relative;
-    color: white;
+    color: #faf4d3;
     font-size: 22px;
     text-decoration: none;
   }
@@ -91,11 +91,20 @@ body, html {
     border-radius: 50%;
     padding: 3px 7px;
   }
+
+  .contacts {
+    position: relative;
+    color: #faf4d3;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 12px;
+  }
   
   .account-icon {
     font-size: 20px;
     cursor: pointer;
-    margin-left: 15px;
+    margin-left: 12px;
+    color: #faf4d3;
   }
   
   .account-wrapper {

@@ -45,15 +45,17 @@
   .manage-products button {
     margin-right: 10px;
     padding: 5px 10px;
-    background-color: #f39c12;
-    color: white;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
     border: none;
     cursor: pointer;
     border-radius: 5px;
   }
   
   .manage-products button:hover {
-    background-color: #e68900;
+    background-color: #004643;
+    color: white;
   }
   
   .manage-products .product-form select {
@@ -63,7 +65,7 @@
   }
   
   .manage-products .product-form select:focus {
-    border-color: #f39c12;
+    border-color: #004643;
     outline: none;
   }
   
@@ -91,7 +93,7 @@
 
   .styled-select select:focus {
     outline: none;
-    border-color: #ff9800;
+    border-color: #004643;
     box-shadow: 0 0 4px rgba(208, 171, 21, 0.5);
   }
 
