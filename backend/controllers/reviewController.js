@@ -1,5 +1,13 @@
 const db = require("../config/db");
 
+/**
+ * Отримує всі відгуки для певного товару.
+ *
+ * @route GET /products/:productId/reviews
+ * @param {import('express').Request} req - HTTP-запит з параметром productId
+ * @param {import('express').Response} res - HTTP-відповідь з масивом відгуків або помилкою
+ * @returns {Promise<void>}
+ */
 const getReviews = async (req, res) => {
   const { productId  } = req.params;
 

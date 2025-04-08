@@ -76,6 +76,15 @@ const removeFromFavourite = async (req, res) => {
   }
 };
 
+/**
+ * Очищає список обраного користувача.
+ *
+ * @route DELETE /favourites/clear
+ * @auth required
+ * @param {import('express').Request} req - HTTP-запит з інформацією про користувача (req.user.id)
+ * @param {import('express').Response} res - HTTP-відповідь з повідомленням про успішне очищення або помилку
+ * @returns {Promise<void>}
+ */
 const clearFavourite = async (req, res) => {
   const user_id = req.user.id;
 

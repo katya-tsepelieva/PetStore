@@ -4,6 +4,12 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+/**
+ * @route GET /products/:productId/reviews
+ * @group Reviews
+ * @param {string} productId.path.required - ID товару
+ * @returns {Array<object>} 200 - Масив відгуків
+ */
 router.get("/products/:productId/reviews", getReviews);
 
 router.post("/products/:productId/reviews", authMiddleware, addReview);
