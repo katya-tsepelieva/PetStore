@@ -67,12 +67,28 @@
     background: #10b981;
   }
   
-  .badge-success {
-    background: #22c55e;
+  .badge-success { 
+    background-color: green; 
+  }
+
+  .badge-canceled { 
+    background-color: red; 
+  }
+
+  .badge-pending { 
+    background-color: yellow; 
   }
   
-  .badge-pending {
-    background: #f97316;
+  .badge-processing { 
+    background-color: orange; 
+  }
+
+  .badge-shipped { 
+    background-color: blue; 
+  }
+
+  .badge-default { 
+    background-color: gray; 
   }
   
   h2 {

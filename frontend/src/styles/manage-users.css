@@ -1,5 +1,10 @@
+* {
+  font-family: 'Arial', sans-serif; 
+}
+
 .manage-users {
     padding: 20px;
+    margin-top: 20px;
   }
   
   .manage-users table {

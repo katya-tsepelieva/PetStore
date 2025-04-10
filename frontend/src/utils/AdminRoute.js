@@ -1,41 +1,20 @@
-import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext"; // Імпортуємо контекст
 
-const AdminRoute = () => {
-  const [loading, setLoading] = useState(true);
-  const [redirect, setRedirect] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      const user = JSON.parse(atob(token.split('.')[1])); // Розшифровка токена для отримання користувача
-
-      if (!user) {
-        setRedirect("/"); // Якщо немає користувача, редірект на домашню сторінку
-        return;
-      }
-
-      if (user.role !== "admin") {
-        setRedirect("/"); // Якщо роль не "admin", редірект на домашню сторінку
-        return;
-      }
-    } else {
-      setRedirect("/"); // Якщо немає токена, редірект на домашню сторінку
-    }
-
-    setLoading(false); // Завершили перевірку
-  }, []);
+const AdminRoute = ({ element }) => {
+  const { user, loading } = useContext(UserContext); // Отримуємо user та loading з контексту
 
   if (loading) {
-    return <div>Завантаження...</div>; // Показуємо завантаження, поки перевірка не завершена
+    return <div>Завантаження...</div>;
   }
 
-  if (redirect) {
-    return <Navigate to={redirect} />; // Редірект, якщо умови не виконуються
+  if (!user || user.role !== "admin") {
+    // Перенаправляємо, якщо користувач не адміністратор
+    return <Navigate to="/" />;
   }
 
-  return <Outlet />; // Якщо все добре, рендеримо дочірні маршрути
+  return element;
 };
 
 export default AdminRoute;

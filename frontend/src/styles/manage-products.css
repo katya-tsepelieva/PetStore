@@ -1,5 +1,10 @@
+* {
+  font-family: 'Arial', sans-serif; 
+}
+
 .manage-products {
     padding: 20px;
+    margin-top: 20px;
   }
   
   .manage-products .product-form {

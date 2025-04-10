@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log("Profile data:", data); 
           if (data.user) {
             setUser(data.user);
           } else {

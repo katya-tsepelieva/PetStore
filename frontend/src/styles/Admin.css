@@ -1,39 +1,63 @@
-.admin-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .admin-sidebar {
-    width: 250px;
-    background: #333;
-    color: white;
-    padding: 20px;
-  }
-  
-  .admin-sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .admin-sidebar li {
-    margin: 10px 0;
-  }
-  
-  .admin-sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .admin-sidebar a:hover,
-  .admin-sidebar a.active {
-    background: #555;
-  }
-  
-  .admin-content {
-    flex: 1;
-    padding: 20px;
-  }
-  
+* {
+  font-family: 'Arial', sans-serif; 
+}
+
+.admin-sidebar-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Ширина сайдбару */
+  height: 100%; /* Повна висота екрану */
+  background-color: #faf4d3;
+  color: #004643;
+  padding: 20px;
+  transform: translateX(-100%); /* Спочатку сайдбар прихований */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000; /* Збільшено, щоб сайдбар був на передньому плані */
+}
+
+/* Клас для відображення сайдбару */
+.admin-sidebar-navbar.open {
+  transform: translateX(0); /* При відкритті сайдбар зсувається */
+}
+
+/* Враховуємо висоту навбару для сайдбару */
+.admin-sidebar-navbar {
+  height: calc(100vh - 10px); /* 50px — це висота навбару */
+  top: 50px; /* Встановлюємо відступ для сайдбару, щоб він починався після навбару */
+  padding-top: 20px; /* Додаємо відступ для внутрішнього контенту */
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-links li {
+  padding: 15px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #004643; /* Лінія після кожної опції */
+  transition: background-color 0.3s ease-in-out; /* Плавний перехід для фону */
+}
+
+.sidebar-links li:hover {
+  background-color: #00464348; /* Світлий фон при наведенні */
+  cursor: pointer;
+}
+
+/* Стиль для посилань */
+.sidebar-links a {
+  text-decoration: none;
+  color: #004643; /* Колір тексту */
+  width: 100%; /* Забезпечує, щоб посилання займало всю ширину */
+  display: block;
+  padding-left: 10px;
+}
+
+/* Стиль для активного посилання */
+.sidebar-links li.active a {
+  font-weight: bold;
+  color: #faf4d3;; /* Трошки темніший колір для активного посилання */
+}

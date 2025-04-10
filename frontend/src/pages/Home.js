@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-// import BannerSlider from '../components/BannerSlider';
 import { useFavourite } from "../context/FavouriteContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons';
@@ -77,7 +76,7 @@ const Home = () => {
     
     <div className="home-container">
       {/* <BannerSlider /> */}
-      <h1 className="home-title">КАТАЛОГ ТОВАРІВ</h1>
+      <h1 className="home-title-name">КАТАЛОГ ТОВАРІВ</h1>
       {searchQuery && <h2>Результати пошуку для: "{searchQuery}"</h2>}
 
       <div className="controls">

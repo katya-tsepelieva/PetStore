@@ -8,11 +8,13 @@ const MyOrdersPage = () => {
   const [error, setError] = useState(null);
 
   const statusMap = {
-    pending: 'Обробляється',
-    delivered: 'Доставлено',
-    canceled: 'Скасовано',
+    pending: 'Очікується',
+    processing: 'Обробляється',
+    shipped: 'Готове до видачі',
+    completed: 'Отримано',
+    cancelled: 'Скасовано',
   };
-  
+
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -49,8 +51,20 @@ const MyOrdersPage = () => {
               <div key={order.id} className="order-card">
                 <div className="order-header">
                   <p><strong>Замовлення</strong></p>
-                  {renderBadge(statusMap[order.status] || 'Обробляється', order.status === 'delivered' ? 'badge-success' : order.status === 'canceled' ? 'badge-canceled' : 'badge-pending')}
-
+                  {renderBadge(
+                    statusMap[order.status] || 'Обробляється', 
+                    order.status === 'completed' 
+                    ? 'badge-success' 
+                    : order.status === 'cancelled' 
+                    ? 'badge-canceled' 
+                    : order.status === 'pending' 
+                    ? 'badge-pending' 
+                    : order.status === 'processing' 
+                    ? 'badge-processing'
+                    : order.status === 'shipped' 
+                    ? 'badge-shipped'
+                    : 'badge-default' 
+                  )}
                 </div>
 
                 <p><strong>Сума:</strong> {order.total_price} грн</p>

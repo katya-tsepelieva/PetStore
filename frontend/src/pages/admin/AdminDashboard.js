@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AdminSidebar from "../../components/AdminSidebar";
+import "../../styles/AdminDashboard.css"; // Підключаємо стилі
+import AdminNavbar from "../../components/AdminNavbar"; // Імпортуємо навігаційну панель
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true); 
@@ -22,13 +23,17 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   if (isLoading) {
-    return <div>Loading...</div>; 
+    return <div className="loading">Loading...</div>; 
   }
 
   return (
-    <div>
-      <AdminSidebar />
-      <h1>Адмін Панель</h1>
+    <div className="admin-dashboard">
+
+      {/* Контент дашборду */}
+      <div className="dashboard-content">
+        <h2>Ласкаво просимо в Адмін панель</h2>
+        {/* Додатковий контент */}
+      </div>
     </div>
   );
 };

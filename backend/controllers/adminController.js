@@ -49,17 +49,48 @@ const getUserOrders = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const [orders] = await db.query("SELECT * FROM orders WHERE user_id = ?", [id]);
+    const [orders] = await db.query(`
+      SELECT o.*, u.username AS customerName
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+      WHERE o.user_id = ?
+    `, [id]);
+
     if (orders.length === 0) {
       return res.status(404).json({ message: "Замовлення для цього користувача не знайдено" });
     }
 
-    res.json(orders);
+    const orderIds = orders.map(order => order.id);
+
+    const [orderItems] = await db.query(`
+      SELECT oi.order_id, p.name AS productName, oi.quantity, oi.price
+      FROM order_items oi
+      JOIN products p ON oi.product_id = p.id
+      WHERE oi.order_id IN (?)
+    `, [orderIds]);
+
+    const orderMap = {};
+    orders.forEach(order => {
+      orderMap[order.id] = { ...order, products: [] };
+    });
+
+    orderItems.forEach(item => {
+      if (orderMap[item.order_id]) {
+        orderMap[item.order_id].products.push({
+          name: item.productName,
+          quantity: item.quantity,
+          price: item.price
+        });
+      }
+    });
+
+    res.json(Object.values(orderMap));
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Помилка при отриманні замовлень користувача" });
   }
 };
+
 
 const updateOrderStatus = async (req, res) => {
   const { orderId } = req.params;
@@ -82,13 +113,47 @@ const updateOrderStatus = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
   try {
-    const [orders] = await db.query("SELECT * FROM orders");
-    res.json(orders);
+    const [orders] = await db.query(`
+      SELECT o.*, u.username AS customerName
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+    `);
+
+    if (orders.length === 0) {
+      return res.status(404).json({ message: "Жодного замовлення не знайдено" });
+    }
+
+    const orderIds = orders.map(order => order.id);
+
+    const [orderItems] = await db.query(`
+      SELECT oi.order_id, p.name AS productName, oi.quantity, oi.price
+      FROM order_items oi
+      JOIN products p ON oi.product_id = p.id
+      WHERE oi.order_id IN (?)
+    `, [orderIds]);
+
+    const orderMap = {};
+    orders.forEach(order => {
+      orderMap[order.id] = { ...order, products: [] };
+    });
+
+    orderItems.forEach(item => {
+      if (orderMap[item.order_id]) {
+        orderMap[item.order_id].products.push({
+          name: item.productName,
+          quantity: item.quantity,
+          price: item.price
+        });
+      }
+    });
+
+    res.json(Object.values(orderMap));
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Помилка при отриманні списку замовлень" });
   }
 };
+
 
 const getAllProducts = async (req, res) => {
   try {
