@@ -21,7 +21,8 @@ const getReviews = async (req, res) => {
     `, [productId ]);
 
     res.json(reviews);
-  } catch (err) {
+  } catch (error) {
+    console.error("Помилка отримання відгуків:", error);
     res.status(500).json({ message: "Помилка отримання відгуків" });
   }
 };
@@ -89,7 +90,8 @@ const updateReview = async (req, res) => {
       );
   
       res.json({ message: "Відгук оновлено" });
-    } catch (err) {
+    } catch (error) {
+      console.error("Помилка оновлення відгуку:", error);
       res.status(500).json({ message: "Помилка оновлення відгуку" });
     }
   };

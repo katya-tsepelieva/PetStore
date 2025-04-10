@@ -13,7 +13,7 @@ const addToFavourite = async (req, res) => {
     if (product.length === 0) {
       return res.status(404).json({ message: "Товар не знайдено" });
     }
-    const price = product[0].price;
+    
 
     const [favouriteItem] = await db.query(
       "SELECT * FROM favourites WHERE user_id = ? AND product_id = ?",
