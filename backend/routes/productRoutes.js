@@ -16,7 +16,9 @@ router.get("/", async (req, res) => {
         params.push(target);
       }
       if (category) {
-        if (target) sql += " AND";
+        if (target) { 
+          sql += " AND";
+        }
         sql += " category = ?";
         params.push(category);
       }

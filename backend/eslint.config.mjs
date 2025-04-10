@@ -22,7 +22,12 @@ export default defineConfig([
   },
   {
     files: ["**/*.js"],
-    languageOptions: { sourceType: "commonjs" }
+    languageOptions: { 
+      sourceType: "commonjs",
+      globals: {
+        ...globals.node 
+      }
+    }
   },
   {
     files: ["**/*.{js,mjs,cjs}"],

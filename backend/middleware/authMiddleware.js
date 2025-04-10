@@ -20,7 +20,8 @@ const authMiddleware = (req, res, next) => {
     req.user = { id: decoded.id, role: decoded.role }; 
 
     next();
-  } catch (err) {
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ message: "Невірний токен" });
   }
 };

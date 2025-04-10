@@ -114,7 +114,8 @@ const updateReview = async (req, res) => {
       await db.query('DELETE FROM reviews WHERE id = ?', [reviewId]);
   
       res.json({ message: "Відгук видалено" });
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       res.status(500).json({ message: "Помилка видалення відгуку" });
     }
   };
