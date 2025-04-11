@@ -4,8 +4,10 @@ const logFormat = format.printf(({ timestamp, level, message }) => {
   return `[${timestamp}] ${level.toUpperCase()}: ${message}`;
 });
 
+const logLevel = process.env.LOG_LEVEL || 'info';
+
 const logger = createLogger({
-  level: 'debug', 
+  level: logLevel, 
   format: format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
     format.colorize(), 
