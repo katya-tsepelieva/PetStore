@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db"); 
+const logger = require("../logger");
 
 router.get("/", async (req, res) => {
   try {
@@ -27,7 +28,7 @@ router.get("/", async (req, res) => {
     const [products] = await db.query(sql, params);
     res.json(products);
   } catch (error) {
-    console.error("Помилка отримання продуктів:", error);
+    logger.error(`Помилка отримання продуктів: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка сервера" });
   }
 });
@@ -46,7 +47,7 @@ router.get("/:id", async (req, res) => {
 
     res.json(product[0]);
   } catch (error) {
-    console.error("Помилка отримання продукту:", error);
+    logger.error(`Помилка отримання продукту: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка сервера", error: error.message });
   }
 });

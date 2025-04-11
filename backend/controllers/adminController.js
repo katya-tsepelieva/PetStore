@@ -1,11 +1,12 @@
 const db = require("../config/db");
+const logger = require("../logger");
 
 const getAllUsers = async (req, res) => {
   try {
     const [users] = await db.query("SELECT id, username, email, role FROM users");
     res.json(users);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при отриманні списку користувачів: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при отриманні списку користувачів" });
   }
 };
@@ -17,12 +18,14 @@ const deleteUser = async (req, res) => {
     const [result] = await db.query("DELETE FROM users WHERE id = ?", [id]);
 
     if (result.affectedRows === 0) {
+      logger.warn(`Користувача з id ${id} не знайдено`);
       return res.status(404).json({ message: "Користувача не знайдено" });
     }
 
+    logger.info(`Користувач з id ${id} успішно видалений`);
     res.json({ message: "Користувача успішно видалено" });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при видаленні користувача з id ${id}: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при видаленні користувача" });
   }
 };
@@ -38,9 +41,10 @@ const makeAdmin = async (req, res) => {
   
       await db.query("UPDATE users SET role = 'admin' WHERE id = ?", [id]);
   
+      logger.info(`Користувача успішно зроблено адміністратором`);
       res.json({ message: "Користувача успішно зроблено адміністратором" });
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      logger.error(`Помилка при зміні ролі користувача: ${error.message}`, { stack: error.stack });
       res.status(500).json({ message: "Помилка при зміні ролі користувача" });
     }
   };
@@ -85,8 +89,8 @@ const getUserOrders = async (req, res) => {
     });
 
     res.json(Object.values(orderMap));
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при отриманні замовлень користувача: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при отриманні замовлень користувача" });
   }
 };
@@ -104,9 +108,10 @@ const updateOrderStatus = async (req, res) => {
 
     await db.query("UPDATE orders SET status = ? WHERE id = ?", [status, orderId]);
 
+    logger.info(`Статус замовлення успішно оновлено`);
     res.json({ message: "Статус замовлення успішно оновлено" });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при оновленні статусу замовлення: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при оновленні статусу замовлення" });
   }
 };
@@ -148,8 +153,8 @@ const getAllOrders = async (req, res) => {
     });
 
     res.json(Object.values(orderMap));
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при отриманні списку замовлень: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при отриманні списку замовлень" });
   }
 };
@@ -159,8 +164,8 @@ const getAllProducts = async (req, res) => {
   try {
     const [products] = await db.query("SELECT * FROM products");
     res.json(products);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при отриманні списку товарів: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при отриманні списку товарів" });
   }
 };
@@ -188,8 +193,8 @@ const createProduct = async (req, res) => {
         brand,
       },
     });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при створенні товару: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при створенні товару" });
   }
 };
@@ -208,9 +213,10 @@ const updateProduct = async (req, res) => {
       return res.status(404).json({ message: "Товар не знайдено" });
     }
 
+    logger.info(`Товар успішно оновлено`);
     res.json({ message: "Товар успішно оновлено" });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при оновленні товару: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при оновленні товару" });
   }
 };
@@ -225,9 +231,10 @@ const deleteProduct = async (req, res) => {
       return res.status(404).json({ message: "Товар не знайдено" });
     }
 
+    logger.info(`Товар успішно видалено`);
     res.json({ message: "Товар успішно видалено" });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при видаленні товару: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при видаленні товару" });
   }
 }; 
@@ -236,8 +243,8 @@ const getAllReviews = async (req, res) => {
   try {
     const [reviews] = await db.query("SELECT r.id, r.product_id, r.user_id, r.rating, r.comment, r.created_at, u.username, p.name AS product_name FROM reviews r JOIN users u ON r.user_id = u.id JOIN products p ON r.product_id = p.id");
     res.json(reviews);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    logger.error(`Помилка при отриманні відгуків: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при отриманні відгуків" });
   }
 };
@@ -252,9 +259,10 @@ const deleteReview = async (req, res) => {
       return res.status(404).json({ message: "Відгук не знайдено" });
     }
 
+    logger.info(`Відгук успішно видалено`);
     res.json({ message: "Відгук успішно видалено" });
   } catch (err) {
-    console.error(err);
+    logger.error(`Помилка при видаленні відгуку: ${error.message}`, { stack: error.stack });
     res.status(500).json({ message: "Помилка при видаленні відгуку" });
   }
 };

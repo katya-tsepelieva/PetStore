@@ -3,6 +3,7 @@ const express = require("express");
 require("./config/db"); 
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const logger = require("./logger");
 
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -42,4 +43,9 @@ app.use("/api/favourites", favouritesRoutes);
 app.use("/api/admin", adminRoutes);
 
 const PORT = 5000;
-app.listen(PORT, () => console.log(`Сервер працює на порту ${PORT}`));
+app.listen(PORT, () => logger.info(`Сервер працює на порту ${PORT}`));
+
+process.on('SIGINT', () => {
+  logger.info('Сервер зупиняється...');
+  process.exit();
+});
