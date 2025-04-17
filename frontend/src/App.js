@@ -3,6 +3,7 @@ import { UserProvider } from "./context/UserContext";
 import { CartProvider } from "./context/CartContext";
 import { FavouriteProvider } from "./context/FavouriteContext";
 import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
@@ -26,12 +27,11 @@ function App() {
         <CartProvider>
           <div className="app-wrapper">
             <Routes>
-              {/* Охорона адмінських маршрутів через AdminRoute */}
               <Route 
                 path="/admin/*" 
                 element={
                   <>
-                    <AdminNavbar /> {/* Окремий Navbar для адміністратора */}
+                    <AdminNavbar /> 
                     <div className="page-content">
                       <Routes>
                         <Route path="/dashboard" element={<AdminDashboard />} />
@@ -44,12 +44,11 @@ function App() {
                 } 
               />
               
-              {/* Загальні маршрути для користувачів */}
               <Route 
                 path="/*"
                 element={
                   <>
-                    <Navbar /> {/* Загальний Navbar для користувача */}
+                    <Navbar />
                     <div className="page-content">
                       <Routes>
                         <Route path="/cart" element={<CartPage />} />
@@ -60,13 +59,14 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/search" element={<Home />} />
                         <Route path="/product/:id" element={<ProductPage />} />
+                        <Route path="/contacts" element={<Contact />} />
                       </Routes>
                     </div>
                   </>
                 }
               />
             </Routes>
-            <Footer /> {/* Футер завжди рендериться після контенту */}
+            <Footer /> 
           </div>
         </CartProvider>
       </FavouriteProvider>

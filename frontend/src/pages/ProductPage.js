@@ -11,13 +11,13 @@ const ProductPage = () => {
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [sortOption, setSortOption] = useState("newest");
   const { addToCart } = useCart();
 
   const averageRating =
-  reviews.length > 0
-    ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
-    : 0;
-
+    reviews.length > 0
+      ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
+      : 0;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -62,18 +62,26 @@ const ProductPage = () => {
     }
   };
 
+  const sortedReviews = [...reviews].sort((a, b) => {
+    switch (sortOption) {
+      case "highest":
+        return b.rating - a.rating;
+      case "lowest":
+        return a.rating - b.rating;
+      default:
+        return 0;
+    }
+  });
+
   if (!product) return <p>Завантаження...</p>;
 
   return (
     <div className="product-container">
       <div className="product-main">
         <div className="product-image-page">
-          <img
-            src={`/images/${product.image_url}`}
-            alt={product.name}
-          />
+          <img src={`/images/${product.image_url}`} alt={product.name} />
         </div>
-  
+
         <div className="product-details">
           <h1 className="product-title">{product.name}</h1>
           <ReactStars
@@ -86,12 +94,9 @@ const ProductPage = () => {
           />
           <p className="product-description">{product.description}</p>
           <p className="product-page-price">{product.price} грн</p>
-  
+
           {product.stock > 0 ? (
-            <button
-              onClick={() => addToCart(product)}
-              className="add-to-cart-product-btn"
-            >
+            <button onClick={() => addToCart(product)} className="add-to-cart-product-btn">
               Додати в кошик
             </button>
           ) : (
@@ -99,22 +104,36 @@ const ProductPage = () => {
           )}
         </div>
       </div>
-  
+
       <div className="reviews">
-        <h2>Відгуки</h2>
+        <div className="reviews-header">
+          <h2>Відгуки</h2>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="review-sort-select"
+          >
+            <option value="newest">Найновіші</option>
+            <option value="highest">Найвищі оцінки</option>
+            <option value="lowest">Найнижчі оцінки</option>
+          </select>
+        </div>
+
         {reviews.length > 0 ? (
           <ul>
-            {reviews.map((review) => (
+            {sortedReviews.map((review) => (
               <li key={review.id} className="review-item">
-                <p><strong>{review.username}</strong></p>
-                <ReactStars
-                  count={5}
-                  value={review.rating}
-                  size={20}
-                  edit={false}
-                  isHalf={true}
-                  activeColor="#ffd700"
-                />
+                <div className="review-top-row">
+                  <strong>{review.username}</strong>
+                  <ReactStars
+                    count={5}
+                    value={review.rating}
+                    size={18}
+                    edit={false}
+                    isHalf={true}
+                    activeColor="#ffd700"
+                  />
+                </div>
                 <p>{review.comment}</p>
               </li>
             ))}
@@ -122,34 +141,43 @@ const ProductPage = () => {
         ) : (
           <p>Немає відгуків</p>
         )}
-  
-        <h3>Додати відгук</h3>
-        <form onSubmit={handleAddReview}>
-          <div>
-            <label>Оцінка:</label>
-            <ReactStars
-              count={5}
-              value={rating}
-              onChange={(newRating) => setRating(newRating)}
-              size={30}
-              isHalf={false}
-              activeColor="#ffd700"
-            />
+
+      <div className="reviews">
+        <h3 className="review-form-title">Додати відгук</h3>
+        <form onSubmit={handleAddReview} className="review-form">
+          <div className="form-columns">
+            <div className="form-group left-column">
+              <label className="form-label">Оцінка:</label>
+              <ReactStars
+                count={5}
+                value={rating}
+                onChange={(newRating) => setRating(newRating)}
+                size={30}
+                isHalf={false}
+                activeColor="#fbbf24"
+              />
+            </div>
+            <div className="form-group right-column">
+              <label htmlFor="comment" className="form-label">Коментар:</label>
+              <textarea
+                id="comment"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                required
+                rows={4}
+                placeholder="Напишіть ваші враження..."
+                className="form-textarea"
+              />
+            </div>
           </div>
-          <div>
-            <label>Коментар:</label>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Залишити відгук</button>
+          <button type="submit" className="form-button">
+            Залишити відгук
+          </button>
         </form>
+       </div>
       </div>
     </div>
   );
-  
 };
 
 export default ProductPage;
