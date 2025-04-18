@@ -64,7 +64,7 @@ const ManageUsers = () => {
                 <td>
                   {user.role !== "admin" && (
                     <button onClick={() => handleMakeAdmin(user.id)}>
-                      Стати адміністратором
+                      Зробити адміністратором
                     </button>
                   )}
                   <button onClick={() => handleDeleteUser(user.id)}>
