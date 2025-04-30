@@ -2,14 +2,18 @@ const db = require("../config/db");
 
 exports.createOrder = async (req, res) => {
   const userId = req.user.id;
-  const { payment_method, delivery_method } = req.body;
+  const { payment_method, delivery_method, delivery_address } = req.body;
 
   if (!['card_on_delivery', 'cash_on_delivery'].includes(payment_method)) {
     return res.status(400).json({ message: 'Невірний спосіб оплати' });
   }
 
-  if (delivery_method !== 'pickup') {
+  if (!['pickup', 'delivery'].includes(delivery_method)) {
     return res.status(400).json({ message: 'Невірний спосіб доставки' });
+  }
+
+  if (delivery_method === 'delivery' && (!delivery_address || delivery_address.trim() === '')) {
+    return res.status(400).json({ message: 'Необхідно вказати адресу доставки' });
   }
 
   try {
@@ -23,13 +27,19 @@ exports.createOrder = async (req, res) => {
     }
 
     const totalPrice = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+      (sum, item) => sum + item.price * 1,
       0
     );
 
     const [orderResult] = await db.execute(
-      'INSERT INTO orders (user_id, total_price, payment_method, delivery_method) VALUES (?, ?, ?, ?)',
-      [userId, totalPrice, payment_method, delivery_method]
+      'INSERT INTO orders (user_id, total_price, payment_method, delivery_method, delivery_address) VALUES (?, ?, ?, ?, ?)',
+      [
+        userId,
+        totalPrice,
+        payment_method,
+        delivery_method,
+        delivery_method === 'delivery' ? delivery_address : null
+      ]
     );
 
     const orderId = orderResult.insertId;

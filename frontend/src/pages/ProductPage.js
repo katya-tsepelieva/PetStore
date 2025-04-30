@@ -14,11 +14,6 @@ const ProductPage = () => {
   const [sortOption, setSortOption] = useState("newest");
   const { addToCart } = useCart();
 
-  const averageRating =
-    reviews.length > 0
-      ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
-      : 0;
-
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -84,14 +79,6 @@ const ProductPage = () => {
 
         <div className="product-details">
           <h1 className="product-title">{product.name}</h1>
-          <ReactStars
-            count={5}
-            value={averageRating}
-            size={24}
-            edit={false}
-            isHalf={true}
-            activeColor="#ffd700"
-          />
           <p className="product-description">{product.description}</p>
           <p className="product-page-price">{product.price} грн</p>
 
@@ -142,39 +129,39 @@ const ProductPage = () => {
           <p>Немає відгуків</p>
         )}
 
-      <div className="reviews">
-        <h3 className="review-form-title">Додати відгук</h3>
-        <form onSubmit={handleAddReview} className="review-form">
-          <div className="form-columns">
-            <div className="form-group left-column">
-              <label className="form-label">Оцінка:</label>
-              <ReactStars
-                count={5}
-                value={rating}
-                onChange={(newRating) => setRating(newRating)}
-                size={30}
-                isHalf={false}
-                activeColor="#fbbf24"
-              />
+        <div className="reviews">
+          <h3 className="review-form-title">Додати відгук</h3>
+          <form onSubmit={handleAddReview} className="review-form">
+            <div className="form-columns">
+              <div className="form-group left-column">
+                <label className="form-label">Оцінка:</label>
+                <ReactStars
+                  count={5}
+                  value={rating}
+                  onChange={(newRating) => setRating(newRating)}
+                  size={30}
+                  isHalf={false}
+                  activeColor="#fbbf24"
+                />
+              </div>
+              <div className="form-group right-column">
+                <label htmlFor="comment" className="form-label">Коментар:</label>
+                <textarea
+                  id="comment"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  required
+                  rows={4}
+                  placeholder="Напишіть ваші враження..."
+                  className="form-textarea"
+                />
+              </div>
             </div>
-            <div className="form-group right-column">
-              <label htmlFor="comment" className="form-label">Коментар:</label>
-              <textarea
-                id="comment"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                required
-                rows={4}
-                placeholder="Напишіть ваші враження..."
-                className="form-textarea"
-              />
-            </div>
-          </div>
-          <button type="submit" className="form-button">
-            Залишити відгук
-          </button>
-        </form>
-       </div>
+            <button type="submit" className="form-button">
+              Залишити відгук
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

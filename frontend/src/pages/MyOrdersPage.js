@@ -75,7 +75,7 @@ const MyOrdersPage = () => {
                     'badge-payment'
                   )}
                   {renderBadge(
-                    order.delivery_method === 'pickup' ? 'Самовивіз' : order.delivery_method,
+                    order.delivery_method === 'pickup' ? 'Самовивіз' : 'Доставка',
                     'badge-delivery'
                   )}
                 </div>

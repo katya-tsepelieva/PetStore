@@ -55,6 +55,7 @@ const ManageOrders = () => {
                 <th>Загальна сума</th>
                 <th>Оплата</th>
                 <th>Доставка</th>
+                <th>Адреса доставки</th>
                 <th>Статус</th>
                 <th>Дата створення</th>
                 <th>Дія</th>
@@ -76,7 +77,8 @@ const ManageOrders = () => {
                   </td>
                   <td>{order.total_price} грн</td>
                   <td>{order.payment_method === "card_on_delivery" ? "Карткою" : "Готівкою"}</td>
-                  <td>{order.delivery_method === "pickup" ? "Самовивіз" : order.delivery_method}</td>
+                  <td>{order.delivery_method === "pickup" ? "Самовивіз" : 'Доставка'}</td>
+                  <td>{order.delivery_address || ''}</td>
                   <td>{order.status}</td>
                   <td>{new Date(order.created_at).toLocaleString("uk-UA")}</td>
                   <td>

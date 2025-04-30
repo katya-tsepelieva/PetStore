@@ -11,6 +11,8 @@ const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState('');
   const { clearCart } = useCart();
+  const [delivery_address, setDeliveryAddress] = useState('');
+
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -29,20 +31,32 @@ const CheckoutPage = () => {
 
   const handleOrder = async () => {
     try {
-      await axios.post('/orders/create', {
+      const body = {
         payment_method: paymentMethod,
         delivery_method: deliveryMethod,
-      });
+        ...(deliveryMethod === 'delivery' && { delivery_address }) // Якщо доставка, додаємо адресу
+      };
+  
+
+      console.log('Запит на сервер:', body);
+      // Надсилаємо запит на сервер
+      await axios.post('/orders/create', body);
+      
+      // Очистка корзини після успішного створення замовлення
       localStorage.removeItem('cart');
       clearCart();
+      
+      // Перехід до сторінки з замовленнями
       navigate('/my-orders');
     } catch (err) {
+      // Виведення помилки, якщо щось пішло не так
       setError(err.response?.data?.message || 'Щось пішло не так');
     }
   };
+  
 
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + item.price * 1,
     0
   );
 
@@ -93,15 +107,33 @@ const CheckoutPage = () => {
         </div>
 
         <div className="checkout-field">
-          <label className="checkout-label">Спосіб доставки</label>
-          <select
-            className="checkout-select"
-            value={deliveryMethod}
-            onChange={e => setDeliveryMethod(e.target.value)}
-          >
-            <option value="pickup">Самовивіз</option>
-          </select>
-        </div>
+  <label className="checkout-label">Спосіб доставки</label>
+  <select
+    className="checkout-select"
+    value={deliveryMethod}
+    onChange={e => {
+      const value = e.target.value;
+      setDeliveryMethod(value);
+      if (value !== 'delivery') setDeliveryAddress('');
+    }}
+  >
+    <option value="pickup">Самовивіз</option>
+    <option value="delivery">Доставка</option>
+  </select>
+</div>
+
+{deliveryMethod === 'delivery' && (
+  <div className="checkout-field">
+    <label className="checkout-label">Адреса доставки</label>
+    <input
+      type="text"
+      className="checkout-input"
+      value={delivery_address}
+      onChange={e => setDeliveryAddress(e.target.value)}
+      placeholder="Введіть адресу доставки"
+    />
+  </div>
+)}
 
         <button
           onClick={handleOrder}

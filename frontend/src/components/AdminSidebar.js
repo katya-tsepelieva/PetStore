@@ -10,7 +10,7 @@ const AdminSidebar = ({ isOpen }) => {
             to="/admin/dashboard"
             className={({ isActive }) => (isActive ? "active" : "")} 
           >
-            🏠 Дашборд
+            Дашборд
           </NavLink>
         </li>
         <li>
@@ -18,7 +18,7 @@ const AdminSidebar = ({ isOpen }) => {
             to="/admin/users"
             className={({ isActive }) => (isActive ? "active" : "")} 
           >
-            👥 Користувачі
+            Користувачі
           </NavLink>
         </li>
         <li>
@@ -26,7 +26,7 @@ const AdminSidebar = ({ isOpen }) => {
             to="/admin/products"
             className={({ isActive }) => (isActive ? "active" : "")} 
           >
-            🛒 Товари
+            Товари
           </NavLink>
         </li>
         <li>
@@ -34,17 +34,9 @@ const AdminSidebar = ({ isOpen }) => {
             to="/admin/orders"
             className={({ isActive }) => (isActive ? "active" : "")} 
           >
-            📦 Замовлення
+            Замовлення
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink 
-            to="/admin/reviews"
-            className={({ isActive }) => (isActive ? "active" : "")} 
-          >
-            💬 Відгуки
-          </NavLink>
-        </li> */}
       </ul>
     </nav>
   );

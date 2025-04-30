@@ -22,15 +22,18 @@
   
   .manage-orders button {
     padding: 5px 10px;
-    background-color: #4f7cad;
-    color: white;
-    border: none;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
   }
   
   .manage-orders button:hover {
-    background-color: #0056b3;
+    background-color: #004643;
+    color: white;
   }
   
   .update-status-form {
@@ -45,15 +48,23 @@
   }
   
   .update-status-form button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
+    padding: 12px 20px;
+    background-color: white;
+    color: #004643;
+    border: 1px solid #0c1618;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+.reviews form button:hover {
+  background-color: #004643;
+  color: white;
   }
   
   .update-status-form button:hover {
-    background-color: #218838;
+    background-color: #004643;
+    color: white;
   }
   

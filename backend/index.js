@@ -12,6 +12,7 @@ const orderRoutes = require("./routes/orderRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const favouritesRoutes = require("./routes/favouritesRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const statisticRoutes = require('./routes/statisticRoutes');
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api", reviewRoutes);
 app.use("/api/favourites", favouritesRoutes);
+app.use('/api', statisticRoutes);
 app.use("/api/admin", adminRoutes);
 
 const PORT = 5000;
